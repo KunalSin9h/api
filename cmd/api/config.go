@@ -11,15 +11,15 @@ type Config struct {
 
 func (c *Config) getConfiguration() error {
 
-	if os.Getenv("host") == "" {
-		os.Setenv("host", "127.0.0.1")
+	if os.Getenv("HOST") == "" {
+		os.Setenv("HOST", "127.0.0.1")
 	}
-	if os.Getenv("post") == "" {
-		os.Setenv("port", "9999")
+	if os.Getenv("PORT") == "" {
+		os.Setenv("PORT", "9999")
 	}
 
-	c.host = os.Getenv("host")
-	c.port = os.Getenv("port")
+	c.host = os.Getenv("HOST")
+	c.port = os.Getenv("PORT")
 
 	return nil
 }
