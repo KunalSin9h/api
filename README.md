@@ -39,6 +39,6 @@ docker run --name api -d -p 9999:9999 ghcr.io/kunalsin9h/api:latest
 > This is for OpenGraph and twitter Card of SEO
 > The background image and font are in `assets` folder
 
-**GET** /v1/image/`:title`
+**GET** /image/`:title`
 
 Returns a image, whose `Content-Type` is `image/jpeg`
