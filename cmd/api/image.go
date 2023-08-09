@@ -6,6 +6,7 @@ import (
 	"image/color"
 	"image/jpeg"
 	"os"
+	"strings"
 
 	"github.com/fogleman/gg"
 	"github.com/gofiber/fiber/v2"
@@ -27,6 +28,8 @@ func (app *App) GenerateImage(c *fiber.Ctx) error {
 	// Title to put in the image
 	title := c.Params("title")
 
+	title = strings.ReplaceAll(title, "%20", " ")
+
 	// Creating a new GG Context with dimension 1200 * 630
 	dc := gg.NewContext(1200, 630)
 
@@ -34,7 +37,7 @@ func (app *App) GenerateImage(c *fiber.Ctx) error {
 
 	// TOTO check why the underline implementation of LoadFontFace
 	// is not thread safe
-	if err := dc.LoadFontFace("assets/fonts/RobotoSlab.ttf", 90); err != nil {
+	if err := dc.LoadFontFace("assets/fonts/RobotoSlab.ttf", 80); err != nil {
 		return err
 	}
 
