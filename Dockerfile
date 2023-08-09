@@ -21,9 +21,6 @@ WORKDIR /api
 COPY assets ./assets/
 COPY --from=builder /api/api .
 
-ENV HOST 0.0.0.0
-ENV PORT 9999
-
-EXPOSE ${PORT}
+EXPOSE 9999
 
 ENTRYPOINT [ "./api" ]
