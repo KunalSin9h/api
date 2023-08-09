@@ -32,7 +32,7 @@ func (app *App) routes() *fiber.App {
 		Used in https://kunalsin9h.com/blog/slug
 		To generate dynamic OG / Twitter Card Images using title
 	*/
-	v1.Get("/images/:title", app.GenerateImage)
+	v1.Get("/image/:title", app.GenerateImage)
 
 	return router
 }

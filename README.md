@@ -26,6 +26,12 @@ go run cmd/api/*.go
 > The `HOST` is where the server servers, default value of `HOST` is `127.0.0.1`
 > The `PORT` is where the server listens, default value of `PORT` is `9999`
 
+### Run using Docker
+
+```bash
+docker run --name api -d -p 9999:9999 ghcr.io/kunalsin9h/api:latest
+```
+
 ### API Endpoints
 
 1. Generate Image for **Blog Post**
