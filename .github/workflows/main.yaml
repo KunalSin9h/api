@@ -15,8 +15,8 @@ jobs:
       - name: build
         run: |
           docker build -t ghcr.io/kunalsin9h/api:latest .
-        if: github.ref == 'refs/heads/master'
       - name: push
-        run : |
+        if: github.ref == 'refs/heads/master'
+        run: |
           echo "${{ secrets.GHCR }}" | docker login ghcr.io -u "kunalsin9h" --password-stdin
           docker push ghcr.io/kunalsin9h/api:latest
