@@ -16,9 +16,7 @@ func main() {
 	// Populate all the Config properties
 	// using configuration file present at
 	// ./config/base.yaml
-	if err := app.config.getConfiguration(); err != nil {
-		panic(err)
-	}
+	app.config.getConfiguration()
 
 	// Setup up Background and Font required
 	// by GenerateImage handler of /image/:title

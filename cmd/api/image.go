@@ -73,7 +73,6 @@ func (app *App) GenerateImage(c *fiber.Ctx) error {
 setUpImageConfig to populate ImageConf
 */
 func (app *App) setUpImageConfig() error {
-
 	file, err := os.Open("assets/images/og-templ.jpg")
 	if err != nil {
 		return nil
