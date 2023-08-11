@@ -9,7 +9,6 @@ import (
 )
 
 func (app *App) routes() *fiber.App {
-
 	// Creating an fiber instance
 	// TODO Apply fiber configuration from app.config.fiber
 	router := fiber.New()

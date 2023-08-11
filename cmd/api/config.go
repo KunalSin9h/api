@@ -9,8 +9,7 @@ type Config struct {
 	port string
 }
 
-func (c *Config) getConfiguration() error {
-
+func (c *Config) getConfiguration() {
 	if os.Getenv("HOST") == "" {
 		os.Setenv("HOST", "127.0.0.1")
 	}
@@ -20,6 +19,4 @@ func (c *Config) getConfiguration() error {
 
 	c.host = os.Getenv("HOST")
 	c.port = os.Getenv("PORT")
-
-	return nil
 }
