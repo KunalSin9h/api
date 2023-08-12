@@ -48,3 +48,14 @@ Returns a image, whose `Content-Type` is `image/jpeg`
 **GET** /v1/views/`:slug`
 
 > This require the `slug` of the blog
+
+**Response**
+
+```json
+{
+  "data": {
+    "views": 0
+  },
+  "success": true
+}
+```

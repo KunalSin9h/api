@@ -5,24 +5,20 @@ services:
     image: mongo:latest
     ports:
       - "27017:27017"
-    restart: always
     deploy:
       mode: global
     environment:
       MONGO_INITDB_ROOT_USERNAME: api
       MONGO_INITDB_ROOT_PASSWORD: api
     volumes:
-      - ./db_data:/data/db
+      - ./api/data:/data/db
 
   api:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: ghcr.io/kunalsin9h.com/api:latest
     depends_on:
       - mongo
     ports:
       - "9999:9999"
-    restart: always
     deploy:
       mode: replicated
       replicas: 1
