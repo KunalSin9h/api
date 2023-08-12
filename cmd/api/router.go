@@ -47,11 +47,19 @@ func (app *App) routes() *fiber.App {
 
 	// // v1
 	v1 := router.Group("v1")
+
 	/*
 		Used in https://kunalsin9h.com/blog/slug
 		To generate dynamic OG / Twitter Card Images using title
 	*/
 	v1.Get("/image/:title", app.GenerateImage)
+
+	/*
+		Used in https://kunalsin9h.com/blog & /blog/slug
+		To show total view on the blog post
+	*/
+	v1.Get("/views", app.views)
+	v1.Get("/views/:slug", app.blogView)
 
 	return router
 }

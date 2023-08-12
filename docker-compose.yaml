@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    restart: always
+    deploy:
+      mode: global
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: api
+      MONGO_INITDB_ROOT_PASSWORD: api
+    volumes:
+      - ./db_data:/data/db
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - mongo
+    ports:
+      - "9999:9999"
+    restart: always
+    deploy:
+      mode: replicated
+      replicas: 1
+    environment:
+      HOST: 0.0.0.0
+      PORT: 9999
+      MONGODB_URL: mongodb://api:api@mongo:27017

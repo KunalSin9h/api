@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    deploy:
+      mode: global
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: api
+      MONGO_INITDB_ROOT_PASSWORD: api
+    volumes:
+      - /api/data:/data/db
+
+  api:
+    image: ghcr.io/kunalsin9h.com/api:latest
+    depends_on:
+      - mongo
+    ports:
+      - "9999:9999"
+    deploy:
+      mode: replicated
+      replicas: 1
+    environment:
+      HOST: 0.0.0.0
+      PORT: 9999
+      MONGODB_URL: mongodb://api:api@mongo:27017
