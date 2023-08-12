@@ -14,7 +14,7 @@ services:
       - /api/data:/data/db
 
   api:
-    image: ghcr.io/kunalsin9h.com/api:latest
+    image: ghcr.io/kunalsin9h/api:latest
     depends_on:
       - mongo
     ports:
