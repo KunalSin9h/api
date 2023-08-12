@@ -34,7 +34,7 @@ docker run --name api -d -p 9999:9999 ghcr.io/kunalsin9h/api:latest
 
 ### API Endpoints
 
-1. Generate Image for **Blog Post**
+## 1. Generate Image for **Blog Post**
 
 > This is for OpenGraph and twitter Card of SEO
 > The background image and font are in `assets` folder
@@ -43,7 +43,29 @@ docker run --name api -d -p 9999:9999 ghcr.io/kunalsin9h/api:latest
 
 Returns a image, whose `Content-Type` is `image/jpeg`
 
-2. Get **Views** on a **Blog Post**
+## 2. Get **Views** for all **Blog Posts**
+
+**GET** /v1/views
+
+**Response**
+
+```json
+{
+  "data": [
+    {
+      "slug": "blog-post-1",
+      "views": 0
+    },
+    {
+      "slug": "blog-post-2",
+      "views": 0
+    }
+  ],
+  "success": true
+}
+```
+
+## 3. Get **Views** on a **Blog Post**
 
 **GET** /v1/views/`:slug`
 
