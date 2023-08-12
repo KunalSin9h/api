@@ -59,16 +59,18 @@ func (app *App) blogView(c *fiber.Ctx) error {
 	}()
 
 	// respond with the number of view + 1
-
-	c.Set("Content-Type", "application/json")
-	c.Status(fiber.StatusOK)
-
-	c.JSON(map[string]any{
-		"success": true,
-		"data": map[string]any{
-			"views": views.Views + 1,
-		},
+	jsonResponse(c, fiber.StatusOK, true, map[string]any{
+		// since the views is not updated, we can just +1
+		"views": views.Views + 1,
 	})
-
 	return nil
+}
+
+func jsonResponse(c *fiber.Ctx, code int, success bool, data any) {
+	c.Set("Content-Type", "application/json")
+	c.Status(code)
+	c.JSON(map[string]any{
+		"success": success,
+		"data":    data,
+	})
 }

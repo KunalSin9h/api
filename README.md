@@ -42,3 +42,9 @@ docker run --name api -d -p 9999:9999 ghcr.io/kunalsin9h/api:latest
 **GET** /v1/image/`:title`
 
 Returns a image, whose `Content-Type` is `image/jpeg`
+
+2. Get **Views** on a **Blog Post**
+
+**GET** /v1/views/`:slug`
+
+> This require the `slug` of the blog
