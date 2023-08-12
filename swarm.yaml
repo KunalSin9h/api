@@ -11,7 +11,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: api
       MONGO_INITDB_ROOT_PASSWORD: api
     volumes:
-      - /api/data:/data/db
+      - ./db_data:/data/db
 
   api:
     image: ghcr.io/kunalsin9h/api:latest
