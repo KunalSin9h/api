@@ -22,7 +22,6 @@ type BlogDoc struct {
 }
 
 func (mdb *MongoDB) Connect(connString string) error {
-
 	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)
 	defer cancel()
 
@@ -34,7 +33,6 @@ func (mdb *MongoDB) Connect(connString string) error {
 
 	// Exponential Backing
 	for i := 1; i <= 5; i++ {
-
 		log.Printf("Trying to ping mongodb to check if we are connected... [%d/%d]\n", i, 5)
 
 		err := client.Ping(ctx, readpref.Primary())
