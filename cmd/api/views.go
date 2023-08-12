@@ -13,9 +13,30 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-// TODO
+/*
+views will give views for all blog
+This will not update the count
+
+TODO use context with timeout
+*/
 func (app *App) views(c *fiber.Ctx) error {
-	c.WriteString("TODO: Total views count")
+	// Get a cursor over all the data
+	cursor, err := app.database.Blog.Find(context.TODO(), bson.D{}, options.Find().SetProjection(bson.D{
+		{Key: "_id", Value: 0},
+	}))
+
+	if err != nil {
+		return err
+	}
+
+	var response []data.BlogDoc
+
+	if err := cursor.All(context.Background(), &response); err != nil {
+		return err
+	}
+
+	jsonResponse(c, fiber.StatusOK, true, response)
+
 	return nil
 }
 
