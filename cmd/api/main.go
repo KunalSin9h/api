@@ -24,7 +24,6 @@ func main() {
 
 	// connect to mongodb client
 	if err := app.database.Connect(app.config.mongodbConnString); err != nil {
-		onExitManeuver(app)
 		log.Fatalf(`Failed to connect to mongodb
 		database via connection string %s, error is: %v\n`, app.config, err)
 	}
