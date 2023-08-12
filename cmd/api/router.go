@@ -55,11 +55,16 @@ func (app *App) routes() *fiber.App {
 	v1.Get("/image/:title", app.GenerateImage)
 
 	/*
-		Used in https://kunalsin9h.com/blog & /blog/slug
+		Used in https://kunalsin9h.com/blog
 		To show total view on the blog post
 	*/
-	v1.Get("/views", app.views)
-	v1.Get("/views/:slug", app.blogView)
+	v1.Get("/views/:slug", app.getViews)
+
+	/*
+		Update & Give the updated view count
+		for the blog  with slug
+	*/
+	v1.Post("/views/:slug", app.updateViews)
 
 	return router
 }

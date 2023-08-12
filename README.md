@@ -43,33 +43,28 @@ docker run --name api -d -p 9999:9999 ghcr.io/kunalsin9h/api:latest
 
 Returns a image, whose `Content-Type` is `image/jpeg`
 
-## 2. Get **Views** for all **Blog Posts**
+## 2. Get **Views** for the blog
 
-**GET** /v1/views
+> This will not update the view count
+
+**GET** /v1/views/`:slug`
 
 **Response**
 
 ```json
 {
   "data": [
-    {
-      "slug": "blog-post-1",
-      "views": 0
-    },
-    {
-      "slug": "blog-post-2",
-      "views": 0
-    }
+    "views": 0
   ],
   "success": true
 }
 ```
 
-## 3. Get **Views** on a **Blog Post**
+## 3. Update **Views** for the blog
 
-**GET** /v1/views/`:slug`
+> This will update and return the updated view count
 
-> This require the `slug` of the blog
+**POST** /v1/views/`:slug`
 
 **Response**
 
