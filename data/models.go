@@ -2,6 +2,7 @@ package data
 
 import (
 	"context"
+	"log"
 	"math"
 	"time"
 
@@ -14,10 +15,17 @@ type MongoDB struct {
 	Blog   *mongo.Collection
 }
 
+type BlogDoc struct {
+	Slug  string `bson:"slug" json="slug"`
+	Views int64  `bson:"views" json="views"`
+}
+
 func (mdb *MongoDB) Connect(connString string) error {
 
 	// Exponential Backing
 	for i := 1; i <= 5; i++ {
+
+		log.Printf("Trying to connect to mongodb... [%d/%d]\n", i, 5)
 
 		client, err := mongo.Connect(context.Background(), options.Client().ApplyURI(connString))
 
@@ -29,8 +37,8 @@ func (mdb *MongoDB) Connect(connString string) error {
 			time.Sleep(time.Duration(math.Pow(float64(i), 2)) * time.Second)
 		} else {
 			mdb.Client = client
-			mdb.blog = mdb.Client.Database("api").Collection("blog")
-
+			mdb.Blog = mdb.Client.Database("api").Collection("blog")
+			log.Printf("Successfully connected to db")
 			break
 		}
 

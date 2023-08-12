@@ -22,17 +22,10 @@ func main() {
 	// ./config/base.yaml
 	app.config.getConfiguration()
 
-	var mongodbConnString = fmt.Sprintf("mongodb://%s:%s@%s:%s",
-		app.config.mongodbUsername,
-		app.config.mongodbPassword,
-		app.config.mongodbHost,
-		app.config.mongoPort,
-	)
-
 	// connect to mongodb client
-	if err := app.database.Connect(mongodbConnString); err != nil {
+	if err := app.database.Connect(app.config.mongodbConnString); err != nil {
 		log.Fatalf(`Failed to connect to mongodb
-		database via connection string %s, error is: %v`, mongodbConnString, err)
+		database via connection string %s, error is: %v\n`, app.config, err)
 	}
 
 	// Disconnect from mongo db database
@@ -40,7 +33,7 @@ func main() {
 	defer func() {
 		if err := app.database.Client.Disconnect(context.Background()); err != nil {
 			log.Fatalf(`Failed to disconnect from mongodb client
-				with connection string %s, error is: %v`, mongodbConnString, err)
+				with connection string %s, error is: %v\n`, app.config.mongodbConnString, err)
 		}
 	}()
 
@@ -51,7 +44,7 @@ func main() {
 	if err := app.setUpImageConfig(); err != nil {
 		log.Fatalf(`Failed to setup config for /image/:title,
 			probably missing assets/font and assets/image folder,
-			error is: %v`, err,
+			error is: %v\n`, err,
 		)
 	}
 
