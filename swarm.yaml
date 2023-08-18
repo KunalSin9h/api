@@ -25,4 +25,5 @@ services:
     environment:
       HOST: 0.0.0.0
       PORT: 9999
+      DB_TIMEOUT: 4000
       MONGODB_URL: mongodb://api:api@mongo:27017

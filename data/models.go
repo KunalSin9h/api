@@ -12,8 +12,9 @@ import (
 )
 
 type MongoDB struct {
-	Client *mongo.Client
-	Blog   *mongo.Collection
+	Client  *mongo.Client
+	Blog    *mongo.Collection
+	Timeout time.Duration
 }
 
 type BlogDoc struct {

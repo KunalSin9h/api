@@ -1,6 +1,6 @@
 module github.com/kunalsin9h/api
 
-go 1.20
+go 1.21
 
 require (
 	github.com/fogleman/gg v1.3.0

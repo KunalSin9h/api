@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"time"
 
 	"github.com/kunalsin9h/api/data"
 )
@@ -21,6 +22,9 @@ func main() {
 	// using configuration file present at
 	// ./config/base.yaml
 	app.config.getConfiguration()
+
+	// Setting Timeout for all mongodb operations
+	app.database.Timeout = time.Millisecond * time.Duration(app.config.dbTimeout)
 
 	// connect to mongodb client
 	if err := app.database.Connect(app.config.mongodbConnString); err != nil {

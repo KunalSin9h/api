@@ -16,8 +16,10 @@ GetBlog will give the BlogDoc upon a slug
 func (mdb *MongoDB) GetBlog(slug string) (BlogDoc, error) {
 	var blog BlogDoc
 
-	// TODO: use context with timeout
-	err := mdb.Blog.FindOne(context.TODO(), bson.D{
+	ctx, cancel := context.WithTimeout(context.Background(), mdb.Timeout)
+	defer cancel()
+
+	err := mdb.Blog.FindOne(ctx, bson.D{
 		{Key: "slug", Value: slug},
 	}, options.FindOne().SetProjection(bson.D{
 		{Key: "_id", Value: 0},
@@ -36,8 +38,10 @@ func (mdb *MongoDB) GetBlog(slug string) (BlogDoc, error) {
 UpdateBlog will update the blog
 */
 func (mdb *MongoDB) UpdateBlog(slug string) error {
-	// TODO: use timeout for context
-	_, err := mdb.Blog.UpdateOne(context.TODO(), bson.D{
+	ctx, cancel := context.WithTimeout(context.Background(), mdb.Timeout)
+	defer cancel()
+
+	_, err := mdb.Blog.UpdateOne(ctx, bson.D{
 		{Key: "slug", Value: slug},
 	}, bson.D{
 		{Key: "$inc", Value: bson.D{{Key: "views", Value: 1}}},
