@@ -22,7 +22,6 @@ func (c *Config) getConfiguration() {
 	if err != nil {
 		slog.Error("Failed to parse DB_TIMEOUT, with error :%v", err.Error())
 		os.Exit(1)
-
 	}
 
 	c.dbTimeout = timeout
