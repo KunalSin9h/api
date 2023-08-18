@@ -19,17 +19,28 @@ cd api
 
 export HOST=127.0.0.1
 export PORT=9999
+export MONGODB_URL=mongodb://localhost:27017
+export DB_TIMEOUT=5000
 
-go run cmd/api/*.go
+go run cmd/api/*
 ```
 
 > The `HOST` is where the server servers, default value of `HOST` is `127.0.0.1`
 > The `PORT` is where the server listens, default value of `PORT` is `9999`
+> The `MONGODB_URL` is where the mongodb database is running, the default value is `mongodb://localhost:27017`
+> The `DB_TIMEOUT` is the timeout time for each mongodb operation, the default value is `5000`
 
 ### Run using Docker
 
 ```bash
-docker run --name api -d -p 9999:9999 ghcr.io/kunalsin9h/api:latest
+docker run \
+   --name api \
+   -d -p 9999:9999 \
+   -e HOST=0.0.0.0 \
+   -e PORT=9999 \
+   -e MONGODB_URL=mongodb://localhost:27017 \
+   -e DB_TIMEOUT=5000 \
+   ghcr.io/kunalsin9h/api:latest
 ```
 
 ### API Endpoints

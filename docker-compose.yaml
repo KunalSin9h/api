@@ -30,3 +30,4 @@ services:
       HOST: 0.0.0.0
       PORT: 9999
       MONGODB_URL: mongodb://api:api@mongo:27017
+      DB_TIMEOUT: 4000
