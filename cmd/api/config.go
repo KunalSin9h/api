@@ -10,7 +10,7 @@ type Config struct {
 	applicationHost   string
 	applicationPort   string
 	mongodbConnString string
-	db_timeout        int
+	dbTimeout         int
 }
 
 func (c *Config) getConfiguration() {
@@ -25,7 +25,7 @@ func (c *Config) getConfiguration() {
 
 	}
 
-	c.db_timeout = timeout
+	c.dbTimeout = timeout
 }
 
 func findEnv(env, def string) string {

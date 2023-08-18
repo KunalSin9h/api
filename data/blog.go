@@ -38,7 +38,6 @@ func (mdb *MongoDB) GetBlog(slug string) (BlogDoc, error) {
 UpdateBlog will update the blog
 */
 func (mdb *MongoDB) UpdateBlog(slug string) error {
-
 	ctx, cancel := context.WithTimeout(context.Background(), mdb.Timeout)
 	defer cancel()
 
