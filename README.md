@@ -112,9 +112,9 @@ Returns a image, whose `Content-Type` is `image/jpeg`
 **Response Payload**
 
 ```json
-{
-    [
-        //data
-    ]
-}
+[
+    {// data},
+    {// data},
+    {// data},
+]
 ```
