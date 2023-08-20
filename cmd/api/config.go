@@ -33,7 +33,6 @@ func (c *Config) getConfiguration() {
 }
 
 func findEnv(env string, def ...string) string {
-
 	if os.Getenv(env) == "" {
 		if len(def) == 0 {
 			slog.Error("ENV '%s' is missing and no default value is configured.", env)

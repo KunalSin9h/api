@@ -32,7 +32,6 @@ func (app *App) addDocuments(c *fiber.Ctx) error {
 }
 
 func (app *App) getDocuments(c *fiber.Ctx) error {
-
 	text := c.Query("text")
 	index := c.Params("index")
 
