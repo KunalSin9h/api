@@ -2,7 +2,7 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
+	"log/slog"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -19,14 +19,12 @@ func (app *App) addDocuments(c *fiber.Ctx) error {
 	var jsonData RequestPayload
 
 	if err := json.Unmarshal(data, &jsonData); err != nil {
-		fmt.Println(err.Error())
+		slog.Error("Failed to marshal request payload: %v", err.Error())
 		return err
 	}
 
-	fmt.Println(jsonData)
-
 	if err := app.meilisearch.AddDocument(index, jsonData.Data); err != nil {
-		fmt.Println(err.Error())
+		slog.Error("Failed to add document in meilisearch: %v", err.Error())
 		return nil
 	}
 
@@ -37,9 +35,6 @@ func (app *App) getDocuments(c *fiber.Ctx) error {
 
 	text := c.Query("text")
 	index := c.Params("index")
-
-	// TODO: remove this ASAP
-	fmt.Println(text)
 
 	data, err := app.meilisearch.SearchDocument(index, text)
 

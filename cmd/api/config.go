@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log/slog"
 	"os"
 	"strconv"
@@ -37,7 +36,7 @@ func findEnv(env string, def ...string) string {
 
 	if os.Getenv(env) == "" {
 		if len(def) == 0 {
-			slog.Error(fmt.Sprintf("ENV '%s' is missing and no default value is configured.", env))
+			slog.Error("ENV '%s' is missing and no default value is configured.", env)
 			os.Exit(1)
 		}
 		os.Setenv(env, def[0])
