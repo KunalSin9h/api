@@ -32,16 +32,16 @@ func (mdb *MongoDB) Connect(connString string) error {
 		return err
 	}
 
-	max_attempt := 5
+	maxAttempt := 5
 
 	// Exponential Backing
-	for i := 1; i <= max_attempt; i++ {
-		log.Printf("Trying to ping mongodb to check if we are connected... [%d/%d]\n", i, max_attempt)
+	for i := 1; i <= maxAttempt; i++ {
+		log.Printf("Trying to ping mongodb to check if we are connected... [%d/%d]\n", i, maxAttempt)
 
 		err := client.Ping(context.Background(), readpref.Primary())
 
 		if err != nil {
-			if i == max_attempt {
+			if i == maxAttempt {
 				return err
 			}
 			time.Sleep(time.Duration(math.Pow(2, float64(i))) * time.Second)
