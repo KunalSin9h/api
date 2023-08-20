@@ -87,3 +87,34 @@ Returns a image, whose `Content-Type` is `image/jpeg`
   "success": true
 }
 ```
+
+## 4. Add Document in the `Meilisearch` 
+
+> This will and or update the document in meilisearch at some index
+
+**POST** /v1/search/`:index`
+
+**Request Payload**
+```json
+{
+    "data": {
+        // json data
+    }
+}
+```
+
+**Response** : 200 if ok
+
+## 5. Get Document from the `Meilisearch` after query
+
+**GET** /v1/search/`:index`?text="how to search"
+
+**Response Payload**
+
+```json
+{
+    [
+        //data
+    ]
+}
+```
