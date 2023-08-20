@@ -23,7 +23,7 @@ func (app *App) addDocuments(c *fiber.Ctx) error {
 		return err
 	}
 
-	if err := app.meilisearch.AddDocument(index, jsonData.Data); err != nil {
+	if err := app.meilisearch.AddDocument(index, jsonData); err != nil {
 		slog.Error("Failed to add document in meilisearch: %v", err.Error())
 		return nil
 	}
