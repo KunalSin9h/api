@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log/slog"
 	"os"
 	"strconv"
@@ -11,6 +12,8 @@ type Config struct {
 	applicationPort   string
 	mongodbConnString string
 	dbTimeout         int
+	meiliHost         string
+	meiliMasterKey    string
 }
 
 func (c *Config) getConfiguration() {
@@ -25,11 +28,19 @@ func (c *Config) getConfiguration() {
 	}
 
 	c.dbTimeout = timeout
+
+	c.meiliHost = findEnv("MEILI_HOST", "http://localhost:7700")
+	c.meiliMasterKey = findEnv("MEILI_MASTER_KEY")
 }
 
-func findEnv(env, def string) string {
+func findEnv(env string, def ...string) string {
+
 	if os.Getenv(env) == "" {
-		os.Setenv(env, def)
+		if len(def) == 0 {
+			slog.Error(fmt.Sprintf("ENV '%s' is missing and no default value is configured.", env))
+			os.Exit(1)
+		}
+		os.Setenv(env, def[0])
 	}
 	return os.Getenv(env)
 }

@@ -6,11 +6,13 @@ import (
 	"log"
 	"time"
 
-	"github.com/kunalsin9h/api/data"
+	"github.com/kunalsin9h/api/internal/data"
+	"github.com/kunalsin9h/api/internal/search"
 )
 
 type App struct {
 	database    data.MongoDB
+	meilisearch search.MeiliSearch
 	config      Config
 	imageConfig ImageConfig
 }
@@ -31,6 +33,9 @@ func main() {
 		log.Fatalf(`Failed to connect to mongodb
 		database via connection string %s, error is: %v\n`, app.config.mongodbConnString, err)
 	}
+
+	// setup connection to meilisearch
+	app.meilisearch.Setup(app.config.meiliHost, app.config.meiliMasterKey)
 
 	// Setup up Background and Font required
 	// by GenerateImage handler of /image/:title

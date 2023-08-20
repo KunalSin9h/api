@@ -9,7 +9,7 @@ COPY go.sum .
 RUN go mod download
 
 COPY cmd ./cmd/
-COPY data ./data/
+COPY internal ./internal/
 
 RUN CGO_ENABLED=0 go build -o api ./cmd/api/*.go
 
