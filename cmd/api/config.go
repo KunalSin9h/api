@@ -29,7 +29,7 @@ func (c *Config) getConfiguration() {
 	c.dbTimeout = timeout
 
 	c.meiliHost = findEnv("MEILI_HOST", "http://localhost:7700")
-	c.meiliMasterKey = findEnv("MEILI_MASTER_KEY")
+	c.meiliMasterKey = findEnv("MEILI_MASTER_KEY", "-meili-master-key-")
 }
 
 func findEnv(env string, def ...string) string {

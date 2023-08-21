@@ -21,14 +21,18 @@ export HOST=127.0.0.1
 export PORT=9999
 export MONGODB_URL=mongodb://localhost:27017
 export DB_TIMEOUT=5000
+export MEILI_HOST=http://localhost:7700
+export MEILI_MASTER_KEY="-meilisearch-master-key-"
 
 go run cmd/api/*
 ```
 
-> The `HOST` is where the server servers, default value of `HOST` is `127.0.0.1`
-> The `PORT` is where the server listens, default value of `PORT` is `9999`
-> The `MONGODB_URL` is where the mongodb database is running, the default value is `mongodb://localhost:27017`
-> The `DB_TIMEOUT` is the timeout time for each mongodb operation, the default value is `5000`
+> The `HOST` is where the server servers, default value of `HOST` is `127.0.0.1`. 
+> The `PORT` is where the server listens, default value of `PORT` is `9999`. 
+> The `MONGODB_URL` is where the mongodb database is running, the default value is `mongodb://localhost:27017`. 
+> The `DB_TIMEOUT` is the timeout time for each mongodb operation, the default value is `5000`. 
+> The `MEILI_HOST` is the host for meilisearch server. 
+> The `MEILI_MASTER_KEY` is the master key (auth) for meilisearch server.
 
 ### Run using Docker
 
@@ -40,6 +44,8 @@ docker run \
    -e PORT=9999 \
    -e MONGODB_URL=mongodb://localhost:27017 \
    -e DB_TIMEOUT=5000 \
+   -e MEILI_HOST=http://localhost:7700 \
+   -e MEILI_MASTER_KEY="-meilisearch-master-key-" \
    ghcr.io/kunalsin9h/api:latest
 ```
 
