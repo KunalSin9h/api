@@ -32,4 +32,4 @@ services:
       MONGODB_URL: mongodb://api:api@mongo:27017
       DB_TIMEOUT: 4000
       MEILI_HOST: https://meili.kunalsin9h.com/
-      MEILI_MASTER_KEY: qbKr+Yj6Opc88yvVLz2sEX/IrdWXM/pfHE8siqtSZQg=
+      MEILI_MASTER_KEY: "key"

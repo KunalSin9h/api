@@ -21,7 +21,9 @@ func (ms *MeiliSearch) AddDocument(index string, document any) error {
 }
 
 func (ms *MeiliSearch) SearchDocument(index, text string) (interface{}, error) {
-	res, err := ms.Client.Index(index).Search(text, &meilisearch.SearchRequest{})
+	res, err := ms.Client.Index(index).Search(text, &meilisearch.SearchRequest{
+		MatchingStrategy: "all",
+	})
 
 	if err != nil {
 		return nil, err
