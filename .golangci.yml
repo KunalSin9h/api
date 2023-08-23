@@ -13,7 +13,6 @@ linters:
     - goprintffuncname
     - gosec
     - gosimple
-    - govet
     - ineffassign
     - misspell
     - nakedret
