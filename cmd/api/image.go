@@ -37,7 +37,7 @@ func (app *App) GenerateImage(c *fiber.Ctx) error {
 
 	// TOTO check why the underline implementation of LoadFontFace
 	// is not thread safe
-	if err := dc.LoadFontFace("assets/fonts/RobotoSlab.ttf", 80); err != nil {
+	if err := dc.LoadFontFace("assets/fonts/LeagueSpartan-Regular.ttf", 60); err != nil {
 		return err
 	}
 
@@ -48,7 +48,7 @@ func (app *App) GenerateImage(c *fiber.Ctx) error {
 	y := textTopMargin
 	maxWidth := float64(dc.Width()) - (2.0 * textRightMargin)
 
-	dc.SetColor(color.White)
+	dc.SetColor(color.Black)
 
 	dc.DrawStringWrapped(title, x+1, y+1, 0, 0, maxWidth, 1.6, gg.AlignLeft)
 
@@ -73,7 +73,7 @@ func (app *App) GenerateImage(c *fiber.Ctx) error {
 setUpImageConfig to populate ImageConf
 */
 func (app *App) setUpImageConfig() error {
-	file, err := os.Open("assets/images/og-templ.jpg")
+	file, err := os.Open("assets/images/templ.jpeg")
 	if err != nil {
 		return nil
 	}
