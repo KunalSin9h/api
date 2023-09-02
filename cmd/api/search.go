@@ -25,7 +25,7 @@ func (app *App) addDocuments(c *fiber.Ctx) error {
 
 	if err := app.meilisearch.AddDocument(index, jsonData.Data); err != nil {
 		slog.Error("Failed to add document in meilisearch: %v", err.Error())
-		return nil
+		return err
 	}
 
 	return nil
