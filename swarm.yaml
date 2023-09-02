@@ -26,4 +26,18 @@ services:
       HOST: 0.0.0.0
       PORT: 9999
       DB_TIMEOUT: 4000
+      MEILI_HOST: 7700
+      MEILI_MASTER_KEY:  16-BYTES-MASTER-KEY
       MONGODB_URL: mongodb://api:api@mongo:27017
+
+  meili:
+    image: ghcr.io/kunalsin9h/meilisearch:latest
+    ports:
+      - "7700:7700"
+    deploy:
+      mode: global
+    environment:
+      MEILI_MASTER_KEY: 16-BYTES-MASTER-KEY    
+    volumes:
+      - ./data.ms:/meilisearch/data.ms
+
