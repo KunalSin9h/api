@@ -31,5 +31,16 @@ services:
       PORT: 9999
       MONGODB_URL: mongodb://api:api@mongo:27017
       DB_TIMEOUT: 4000
-      MEILI_HOST: https://meili.kunalsin9h.com/
-      MEILI_MASTER_KEY: "key"
+      MEILI_HOST: http://meili:7700
+      MEILI_MASTER_KEY: "A-16-BYTES-KEY"
+
+  meili:
+    image: ghcr.io/kunalsin9h/meilisearch:latest
+    ports:
+      - "7700:7700"
+    deploy:
+      mode: global
+    environment:
+      MEILI_MASTER_KEY: "A-16-BYTES-KEY"
+    volumes:
+      - ./data.ms:/meilisearch/data.ms
