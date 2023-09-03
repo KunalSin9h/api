@@ -12,7 +12,7 @@ type RequestPayload struct {
 }
 
 type PostMeta struct {
-	Id          string `json:"id"`
+	ID          string `json:"id"`
 	Slug        string `json:"slug"`
 	Title       string `json:"title"`
 	Description string `json:"description"`
