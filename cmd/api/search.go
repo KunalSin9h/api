@@ -8,7 +8,16 @@ import (
 )
 
 type RequestPayload struct {
-	Data any `json:"data"`
+	Data []PostMeta `json:"data"`
+}
+
+type PostMeta struct {
+	Id          string `json:"id"`
+	Slug        string `json:"slug"`
+	Title       string `json:"title"`
+	Description string `json:"description"`
+	Published   string `json:"published"`
+	Content     string `json:"content"`
 }
 
 func (app *App) addDocuments(c *fiber.Ctx) error {
