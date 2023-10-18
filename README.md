@@ -27,6 +27,7 @@ export MEILI_MASTER_KEY="-meilisearch-master-key-"
 go run cmd/api/*
 ```
 
+> [!NOTE]
 > The `HOST` is where the server servers, default value of `HOST` is `127.0.0.1`. 
 > The `PORT` is where the server listens, default value of `PORT` is `9999`. 
 > The `MONGODB_URL` is where the mongodb database is running, the default value is `mongodb://localhost:27017`. 
