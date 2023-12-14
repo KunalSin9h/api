@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  api:
+    image: ghcr.io/kunalsin9h/api:latest
+    depends_on:
+      - mongo
+    ports:
+      - "9999:9999"
+    deploy:
+      mode: replicated
+      replicas: 1
+    env_file:
+      - ~/secrets/api
+
+  meili:
+    image: ghcr.io/kunalsin9h/meilisearch:latest
+    ports:
+      - "7700:7700"
+    deploy:
+      mode: global
+    env_file:
+      - ~/secrets/meili
+    volumes:
+      - meili:/meilisearch/data.ms
