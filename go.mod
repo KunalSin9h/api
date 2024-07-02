@@ -4,7 +4,7 @@ go 1.21
 
 require (
 	github.com/fogleman/gg v1.3.0
-	github.com/gofiber/fiber/v2 v2.52.1
+	github.com/gofiber/fiber/v2 v2.52.5
 	github.com/meilisearch/meilisearch-go v0.25.0
 	go.mongodb.org/mongo-driver v1.12.1
 )
