@@ -1,6 +1,11 @@
-# api
+# API Backend
 
 Api backend for my personal website (kunalsin9h.com)
+
+Features:
+
+- Generate Dynamic OG images
+- Maintain views count for blogs
 
 ## Docs
 

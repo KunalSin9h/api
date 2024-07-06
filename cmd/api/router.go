@@ -16,7 +16,7 @@ func (app *App) routes() *fiber.App {
 	// Applying cors
 	// TODO cors config can be applied from app.config.cors
 	router.Use(cors.New(cors.Config{
-		AllowOrigins: "http://*, https://*",
+		AllowOrigins: "https://kunalsin9h.com",
 		AllowMethods: strings.Join([]string{
 			fiber.MethodGet,
 			fiber.MethodPost,
@@ -26,8 +26,7 @@ func (app *App) routes() *fiber.App {
 			fiber.MethodPatch,
 		}, ","),
 		AllowHeaders:     "Origin, Content-Type, Accept, Accept-Language, Content-Length",
-		AllowCredentials: true,
-		ExposeHeaders:    "Link",
+		AllowCredentials: true, // allow cookies, HTTP Authentication etc.
 		MaxAge:           300,
 	}))
 
